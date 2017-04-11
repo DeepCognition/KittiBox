@@ -43,7 +43,7 @@ Above commands will install the linux version with gpu support. For other versio
 
 1. Clone this repository: `git clone https://github.com/MarvinTeichmann/KittiBox.git`
 2. Initialize all submodules: `git submodule update --init --recursive`
-3. Run `cd submodules/utils && make` to build cython code
+3. Run `cd submodules/utils && make all-python3` to build cython code
 4. [Optional] Download Kitti Object Detection Data 
     1. Retrieve Kitti data url here: [http://www.cvlibs.net/download.php?file=data_object_image_2.zip](http://www.cvlibs.net/download.php?file=data_object_image_2.zip)
     2. Call `python download_data.py --kitti_url URL_YOU_RETRIEVED`
@@ -62,11 +62,11 @@ If you forget the second step you might end up with an inconstant repository sta
 
 ### Getting started
 
-Run: `python demo.py --input_image data/demo.png` to obtain a prediction using [demo.png](data/demo.png) as input.
+Run: `python3 demo.py --input_image data/demo.png` to obtain a prediction using [demo.png](data/demo.png) as input.
 
-Run: `python evaluate.py` to compute train and validation scores.
+Run: `python3 evaluate.py` to compute train and validation scores.
 
-Run: `python train.py` to train a new model on the Kitti Data.
+Run: `python3 train.py` to train a new model on the Kitti Data.
 
 If you like to understand the code, I would recommend looking at [demo.py](demo.py) first. I have documented each step as  	thoroughly as possible in this file.
 
@@ -74,7 +74,7 @@ If you like to understand the code, I would recommend looking at [demo.py](demo.
 
 The model is controlled by the file `hypes/kittiBox.json`. Modifying this file should be enough to train the model on your own data and adjust the architecture according to your needs. You can create a new file `hypes/my_hype.json` and train that architecture using:
 
-`python train.py --hypes hypes/my_hype.json`
+`python3 train.py --hypes hypes/my_hype.json`
 
 
 
@@ -98,7 +98,7 @@ Those modules operate independently. This allows easy experiments with different
 By default, the data is stored in the folder `KittiBox/DATA` and the output of runs in `KittiBox/RUNS`. This behaviour can be changed by adjusting the environoment Variabels: `$TV_DIR_DATA` and `$TV_DIR_RUNS`.
 
 For organizing your experiments you can use:
-`python train.py --project batch_size_bench --name size_5`. This will store the run in the subfolder:  `$TV_DIR_RUNS/batch_size_bench/size_5_%DATE`
+`python3 train.py --project batch_size_bench --name size_5`. This will store the run in the subfolder:  `$TV_DIR_RUNS/batch_size_bench/size_5_%DATE`
 
 This is useful if you want to run different series of experiments.
 
@@ -111,7 +111,7 @@ KittiBox is build on top of the TensorVision [TensorVision](https://github.com/T
 To utilize the entire TensorVision functionality install it using 
 
 `$ cd KittiBox/submodules/TensorVision` <br>
-`$ python setup install`
+`$ python3 setup install`
 
 Now you can use the TensorVision command line tools, which includes:
 
