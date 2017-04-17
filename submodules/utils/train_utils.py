@@ -64,7 +64,7 @@ def compute_rectangels(H, confidences, boxes, use_stitching=False, rnn_len=1, mi
 
     all_rects_r = [r for row in all_rects for cell in row for r in cell]
     if use_stitching:
-        from stitch_wrapper import stitch_rects
+        from utils.stitch_wrapper import stitch_rects
         acc_rects = stitch_rects(all_rects, tau)
     else:
         acc_rects = all_rects_r
@@ -250,3 +250,4 @@ def bilinear_select(H, pred_boxes, early_feat, early_feat_channels, w_offset, h_
 
     interp_indices = tf.concat(axis=1, values=[tf.to_float(batch_ids), pred_y_center_clip, pred_x_center_clip])
     return interp_indices
+
