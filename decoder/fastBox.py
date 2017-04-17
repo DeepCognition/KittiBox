@@ -470,7 +470,7 @@ def evaluation(hyp, images, labels, decoded_logits, losses, global_step):
     pred_log_img = tf.py_func(log_image,
                               [images, test_pred_confidences,
                                test_pred_boxes, global_step, 'pred'],
-                              [tf.float32])
+                              [tf.uint8])#[tf.float32])
 
     true_log_img = tf.py_func(log_image,
                               [images, confidences,

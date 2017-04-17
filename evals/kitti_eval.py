@@ -187,14 +187,14 @@ def get_results(hypes, sess, image_pl, decoded_logits, validation=True):
         pred_annolist.append(pred_anno)
 
     start_time = time.time()
-    for i in xrange(100):
+    for i in range(100):
         (np_pred_boxes, np_pred_confidences) = sess.run([pred_boxes,
                                                          pred_confidences],
                                                         feed_dict=feed)
     dt = (time.time() - start_time)/100
 
     start_time = time.time()
-    for i in xrange(100):
+    for i in range(100):
         utils.train_utils.compute_rectangels(
             hypes, np_pred_confidences,
             np_pred_boxes, show_removed=False,

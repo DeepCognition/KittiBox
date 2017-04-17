@@ -237,7 +237,7 @@ def start_enqueuing_threads(hypes, q, phase, sess):
                           jitter={'train': hypes['solver']['use_jitter'],
                                   'val': False}[phase])
 
-    data = gen.next()
+    data = next(gen)    #gen.next()
     sess.run(enqueue_op, feed_dict=make_feed(data))
     t = threading.Thread(target=thread_loop,
                          args=(sess, enqueue_op, gen))

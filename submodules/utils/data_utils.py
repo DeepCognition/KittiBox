@@ -34,14 +34,14 @@ def annotation_to_h5(H, a, cell_width, cell_height, max_len):
     boxes = np.zeros((1, cells_per_image, 4, max_len, 1), dtype=np.float)
     box_flags = np.zeros((1, cells_per_image, 1, max_len, 1), dtype=np.float)
 
-    for cidx in xrange(cells_per_image):
+    for cidx in range(cells_per_image):
         # assert(cur_num_boxes <= max_len)
 
         cell_ox = 0.5 * (cell_regions[cidx].x1 + cell_regions[cidx].x2)
         cell_oy = 0.5 * (cell_regions[cidx].y1 + cell_regions[cidx].y2)
 
         unsorted_boxes = []
-        for bidx in xrange(min(len(box_list[cidx]), max_len)):
+        for bidx in range(min(len(box_list[cidx]), max_len)):
 
             # relative box position with respect to cell
             ox = 0.5 * \
@@ -68,8 +68,8 @@ def annotation_to_h5(H, a, cell_width, cell_height, max_len):
 def get_cell_grid(cell_width, cell_height, region_size):
 
     cell_regions = []
-    for iy in xrange(cell_height):
-        for ix in xrange(cell_width):
+    for iy in range(cell_height):
+        for ix in range(cell_width):
             cidx = iy * cell_width + ix
             ox = (ix + 0.5) * region_size
             oy = (iy + 0.5) * region_size
@@ -126,7 +126,7 @@ def annotation_jitter(I, a_in, min_box_width=20, jitter_scale_min=0.9, jitter_sc
             for p in r.point:
                 p.x = I.shape[1] - p.x
 
-    if random.random > 0.8:
+    if random.random() > 0.8:
         return I, a
 
     I1 = scp.misc.imresize(I, jitter_scale, interp='cubic')
